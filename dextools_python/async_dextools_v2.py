@@ -107,7 +107,14 @@ class AsyncDextoolsAPIV2:
         async with self._session.get(f"{self.url}{endpoint}{chain}/{address}", headers=self._headers) as response:
             logger.debug(response.url)
             return await response.json()
-    
+
+    async def get_token_audit(self, chain, address):
+        endpoint = "/token/"
+
+        async with self._session.get(f"{self.url}{endpoint}{chain}/{address}/audit", headers=self._headers) as response:
+            logger.debug(response.url)
+            return await response.json()
+
     async def get_token_locks(self, chain, address):
         endpoint = "/token/"
 
